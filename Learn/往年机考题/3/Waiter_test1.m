@@ -1,0 +1,10 @@
+clear all; close all; clc;
+p=[-0.8;0.5+0.5j;0.5-0.5j];
+z=[0;1+0.8j;1-0.8j];
+[b a]=zp2tf(z,p,1);
+h=impz(b,a,20);
+a2=[1 -0.2 0.1];
+b2=[1 -1];
+y=filter(b2,a2,h);
+figure;
+plot(y);

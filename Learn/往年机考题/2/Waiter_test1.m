@@ -1,0 +1,10 @@
+clear all; close all; clc;
+p=[-0.4;0.45+0.3j;0.45-0.3j];
+z=[0;1+0.6j;1-0.6j];
+[b1 a1]=zp2tf(z,p,1);
+[b2 a2]=zp2tf(p,z,1);
+figure;
+subplot(2,1,1);
+impz(b1,a1,20);
+subplot(2,1,2);
+impz(b2,a2,20);

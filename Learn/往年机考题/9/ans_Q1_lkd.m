@@ -1,0 +1,37 @@
+clear all;
+close all;
+clc;
+%% data
+b=[0.6,-1.1,1];
+a=[1,-1.1,0.6];
+s_1=generate_s_lkd(3);
+s_2=generate_s_lkd(77);
+t=(0:0.05:1).';
+%% calc
+figure;
+zplane(b,a);
+figure;
+impz(b,a);
+r_1=filter(b,a,s_1);
+r_2=filter(b,a,s_2);
+figure;
+subplot(2,2,1);
+stem(t,s_1,'o-','markerfacecolor',[0,0,1]);
+xlabel('t (samples)');
+ylabel('Amplitude');
+title('s\_1');
+subplot(2,2,2);
+stem(t,s_2,'o-','markerfacecolor',[0,0,1]);
+xlabel('t (samples)');
+ylabel('Amplitude');
+title('s\_2');
+subplot(2,2,3);
+stem(t,r_1,'o-','markerfacecolor',[0,0,1]);
+xlabel('t (samples)');
+ylabel('Amplitude');
+title('r\_1');
+subplot(2,2,4);
+stem(t,r_2,'o-','markerfacecolor',[0,0,1]);
+xlabel('t (samples)');
+ylabel('Amplitude');
+title('r\_2');

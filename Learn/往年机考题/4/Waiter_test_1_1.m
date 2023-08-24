@@ -1,0 +1,13 @@
+a=[1];
+b=[0.1,-0.2,1.2,-0.2,0.1];
+n=[0:20];
+figure;
+[h,t]=impz(b,a,n);
+stem(n,h);
+figure,freqz(b,a);
+b1=[-0.05,0.1,0.9,0.1,-0.05];
+b2=[0.4,-0.2,0.6,-0.2,0.4];
+figure;
+freqz(b1,a);
+figure;
+freqz(b2,a);

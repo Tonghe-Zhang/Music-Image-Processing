@@ -1,0 +1,10 @@
+clear all;
+close all;
+clc;
+a=[1,1.2,1];
+b=[1,1];
+t = 0:0.01:10;
+x = heaviside(t) - heaviside(t-2);
+sys=tf(b,a);
+y=lsim(sys,x,t);
+plot(t,y);

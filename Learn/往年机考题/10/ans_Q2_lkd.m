@@ -1,0 +1,31 @@
+clear all;
+close all;
+clc;
+%% data
+b_a=[0.1,0.2,0.2,0.2,0.2,0.1];
+a_a=1;
+b_b=[0.1,-0.2,0.2,-0.2,0.2,-0.1];
+a_b=1;
+t=(0:1/1000:1).';
+x=square(pi*t/0.1,50);
+c=sin(2*pi*400*t);
+y=x.*c;
+xx=y.*c;
+x_r=filter(b_a,a_a,xx);
+%% plot
+figure;
+subplot(5,1,1);
+plot(t,x);
+title('x');
+subplot(5,1,2);
+plot(t,c);
+title('c');
+subplot(5,1,3);
+plot(t,y);
+title('y');
+subplot(5,1,4);
+plot(t,xx);
+title('xx');
+subplot(5,1,5);
+plot(t,x_r);
+title('x_r');

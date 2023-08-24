@@ -1,0 +1,9 @@
+load('stockdata.mat');
+subplot(2,2,1);
+plot(opening);
+subplot(2,2,2);
+plot(closing);
+subplot(2,2,3);
+plot(peak);
+subplot(2,2,4);
+plot(nadir);

@@ -1,0 +1,53 @@
+%input the strongest pitch in a power spectrum P,
+%output the amplitude distribution 
+%of its overtone in this spectrum P.
+function H=harmonic_analysis(w,P,eps)
+
+%the harmonic table
+%   440     220  440  880  1760
+%    *      0.1  0.4  0.3  0.2
+H=rand(2,5);
+
+P_0=P(1:round(length(P)/2));
+P_0=P_0.*1000.*(double(P_0>0.05));
+[amps,freqs]=findpeaks(P_0);
+
+n_in_table=1;
+found=0;
+arg1=max(freqs);
+H(2,1)=w(max(P_0))/(2*pi);
+for i=1:length(P_0)%tranverse from the lowest freq.
+    quotient=arg1/P_0(i);
+    if(found==0)
+        if(is_int(quotient,eps)==1)
+             %then P_0(i) divides arg1, which indicates that P_0(i) is a base.
+             base=P_0(i);
+             n_in_table=2;
+             found=1;
+             for j=i+1:length(P_0)
+                 if (is_int(P_0(j)/base,eps) ==1)
+                    if(n_in_table<6)
+                       H(1,n_in_table)=w(j)/(2*pi);
+                       H(2,n_in_table)=amps(j);
+                       n_in_table=n_in_table+1;
+                    end
+                 end
+             end
+        end
+    end
+end
+
+H(2,:)=H(2,:)/(sum(H(2,:)));
+
+
+
+
+
+
+
+
+
+
+
+
+

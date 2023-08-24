@@ -1,0 +1,24 @@
+clear all;
+close all;
+clc;
+a=[1,-1.1,0.6];
+b=[0.6,-1.1,1];
+%zplane(b,a);
+%figure;
+%freqz(b,a);
+[z,p,k]=tf2zp(b,a);
+n =0:39;
+x = stepfun(n,0) + sin(pi*n/10)+cos(pi*n/6);
+subplot(3,2,1);
+[b1,a1]=zp2tf(z,p,k);
+sdfds=filter(b,a,x);
+stem(sdfds);
+for w=1:5;
+    zz=f_rotate1(z,20*w);
+    pp=f_rotate1(p,20*w);
+    [b1,a1] = zp2tf(zz,pp,k);
+    %filter(b1,a1,x);
+    subplot(3,2,w+1);
+    za=filter(b1,a1,x);
+    stem(za);
+end

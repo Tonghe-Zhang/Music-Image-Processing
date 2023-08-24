@@ -1,0 +1,18 @@
+a=[1,2,-0.2];
+b=[1,-1];
+sys=tf(b,a);
+t=0:0.01:10;
+x1=dirac(t);
+x1(1)=1/0.01;
+x2=heaviside(t);
+y1=lsim(sys,x1,t);
+hold on;
+y2=impulse(b,a,t);
+plot(t,y1,'c');
+plot(t,y2,'r');
+figure;
+y3=lsim(sys,x2,t);
+plot(t,y3);
+hold on;
+y4 = step(b,a,t);
+plot(t,y4,'o');

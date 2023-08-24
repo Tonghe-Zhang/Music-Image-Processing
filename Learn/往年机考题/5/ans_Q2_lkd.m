@@ -1,0 +1,33 @@
+close all;
+clear all;
+clc;
+%% data
+b_1=[1,1/3];
+a_1=[1,-3/4,1/8];
+z_2=[2;2];
+p_2=[0;1/2];
+k_2=1;
+n=(0:39).';
+e=sin(pi*n/10)+cos(pi*n/6);
+%% calc
+[b_2,a_2]=zp2tf(z_2,p_2,k_2);
+b=conv(b_1,b_2);
+a=conv(a_1,a_2);
+r_1=filter(b_1,a_1,e);
+r=filter(b,a,e);
+figure;
+subplot(3,1,1);
+stem(n,e,'o','markerfacecolor',[0,0,1]);
+xlabel('n (samples)');
+ylabel('Amplitude');
+title('e');
+subplot(3,1,2);
+stem(n,r_1,'o','markerfacecolor',[0,0,1]);
+xlabel('n (samples)');
+ylabel('Amplitude');
+title('r_1');
+subplot(3,1,3);
+stem(n,r,'o','markerfacecolor',[0,0,1]);
+xlabel('n (samples)');
+ylabel('Amplitude');
+title('r');

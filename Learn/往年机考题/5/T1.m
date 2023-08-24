@@ -1,0 +1,13 @@
+clear all;
+close all;
+clc;
+b1=[1,1/3];
+a1=[1,-3/4,1/8];
+zplane(b1,a1);
+figure;
+freqz(b1,a1);
+z = [2;2];
+p = [0;1/2];
+[b2,a2]=zp2tf(z,p,1);
+figure;
+impz(b2,a2);

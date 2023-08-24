@@ -1,0 +1,4 @@
+1.zigzag一致
+2.C_q一致
+3.AC encoding 一致
+4.DC encoding 一致
