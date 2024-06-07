@@ -1,3 +1,5 @@
-# MATLAB_music_image_projects
-The 'Advanced Matlab Programming and Its Application' course project includes a 3262-line MATLAB project
-for both JPEG format image conversion and facial recognition, which was developed from August 20, 2023 to August 24, 2023.
+# MATLAB_music_image_projects 
+
+JPEG format image conversion and facial recognition in MATLAB. 
+Course Project in 'Advanced Matlab Programming and Its Application' at Tsinghua University. 
+3262-lines of codes developed from August 20, 2023 to August 24, 2023.
